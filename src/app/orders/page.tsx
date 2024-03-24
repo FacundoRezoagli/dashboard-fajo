@@ -14,9 +14,16 @@ export default function Clients() {
 
   const getData = () => {
     try {
-      axios.get('http://localhost:5199/api/clients')
+      axios.get('http://localhost:5199/api/orders')
         .then((response: any) => {
-          setDataApi(response.data);
+          const modifiedData = response.data.map((item: any) => {
+            return { 
+              ...item,
+              creationDate: item.creationDate.split('T')[0], // Obtener solo la fecha
+              dueDate: item.dueDate.split('T')[0] // Obtener solo la fecha
+            };
+          });
+          setDataApi(modifiedData);
         })
         .catch((error: any) => {
           console.log(error);
@@ -28,17 +35,15 @@ export default function Clients() {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: '#', width: 100 },
-    { field: 'firstName', headerName: 'Nombre', width: 200 },
-    { field: 'lastName', headerName: 'Apellido', width: 200 },
-    { field: 'companyName', headerName: 'Compañía', width: 200 },
-    { field: 'email', headerName: 'Email', width: 200 },
-    { field: 'cellPhone', headerName: 'Teléfono', width: 200 }
+    { field: 'creationDate', headerName: 'Fecha de Creación', width: 200 },
+    { field: 'dueDate', headerName: 'Fecha de Vencimiento', width: 200 },
+    { field: 'clientId', headerName: 'ID del Cliente', width: 200 },
   ];
 
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>Clientes</h1> 
-    <div style={{ height: 900, width: '60%' , margin: 'auto'}}>
+  <div>
+    <h1 style={{ textAlign: 'center' }}>Pedidos</h1> 
+    <div style={{ height: 900, width: '33%', margin: 'auto' }}>
       <DataGrid
         rows={dataApi}
         columns={columns}
@@ -47,6 +52,6 @@ export default function Clients() {
         autoHeight
       />
     </div>
-    </div>
+  </div>
   );
 }

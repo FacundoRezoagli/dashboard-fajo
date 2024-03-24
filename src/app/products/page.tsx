@@ -14,7 +14,7 @@ export default function Clients() {
 
   const getData = () => {
     try {
-      axios.get('http://localhost:5199/api/clients')
+      axios.get('http://localhost:5199/api/products')
         .then((response: any) => {
           setDataApi(response.data);
         })
@@ -28,17 +28,14 @@ export default function Clients() {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: '#', width: 100 },
-    { field: 'firstName', headerName: 'Nombre', width: 200 },
-    { field: 'lastName', headerName: 'Apellido', width: 200 },
-    { field: 'companyName', headerName: 'Compañía', width: 200 },
-    { field: 'email', headerName: 'Email', width: 200 },
-    { field: 'cellPhone', headerName: 'Teléfono', width: 200 }
+    { field: 'name', headerName: 'Nombre', width: 300 }, // Modificado para adaptarse a la API de productos
+    { field: 'price', headerName: 'Precio', width: 200 }, // Modificado para adaptarse a la API de productos
   ];
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center' }}>Clientes</h1> 
-    <div style={{ height: 900, width: '60%' , margin: 'auto'}}>
+      <h1 style={{ textAlign: 'center' }}>Productos</h1> 
+    <div style={{ height: 900, width: '25%' , margin: 'auto'}}>
       <DataGrid
         rows={dataApi}
         columns={columns}

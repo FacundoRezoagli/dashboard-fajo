@@ -1,12 +1,9 @@
 'use client';
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import '@floating-ui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   useEffect(()=>{
-    import('bootstrap/dist/js/bootstrap.bundle');
+    
   })
   return (
     <html lang="en">
@@ -30,7 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand text-white" href="#">Navbar</a>
+          
           <button className="navbar-toggler text-white bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -42,13 +39,16 @@ export default function RootLayout({
               <li className="nav-item">
                 <a className="nav-link text-white" href="/products">Productos</a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link text-white" href="/orders">Pedidos</a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
       <div className="d-flex justify-content-center">
       <div className="d-flex justify-content-center mt-4">
-          <h1>Clients Manager App</h1>
+          <h1></h1>
         </div>
       </div>
       
