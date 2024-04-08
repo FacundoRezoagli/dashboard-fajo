@@ -1,30 +1,16 @@
-'use client'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './clients.css';
-import { useEffect, useState } from "react";
-import axios from 'axios';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-export default function Clients() {
+const fetchData = async () => {
+  const response = await fetch("http://localhost:5199/api/clients");
+  const data = await response.json();
+  return data;
+}
 
-  const [dataApi, setDataApi] = useState<any>([]);
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = () => {
-    try {
-      axios.get('http://localhost:5199/api/clients')
-        .then((response: any) => {
-          setDataApi(response.data);
-        })
-        .catch((error: any) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export default async function Clients() {
+  const dataApi = await fetchData();
+  
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: '#', width: 100 },
@@ -34,7 +20,6 @@ export default function Clients() {
     { field: 'email', headerName: 'Email', width: 200 },
     { field: 'cellPhone', headerName: 'Teléfono', width: 200 }
   ];
-
   return (
     <div>
       <h1 style={{ textAlign: 'center' }}>Clientes</h1> 
