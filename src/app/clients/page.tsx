@@ -1,37 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './clients.css';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import styles from "./clients.module.css"
+import { Metadata } from 'next';
+import { Client } from '@/types/types';
+import { TableClients } from '@/components/clients/table-clients';
 
-const fetchData = async () => {
+export const metadata: Metadata = {
+  title: "Clientes",
+  description: "Toda la información sobre los clientes"
+}
+
+const getClientes = async (): Promise<Array<Client>> => {
   const response = await fetch("http://localhost:5199/api/clients");
   const data = await response.json();
-  return data;
+  return data ?? [] as Array<Client>;
 }
 
 export default async function Clients() {
-  const dataApi = await fetchData();
+  const clientes = await getClientes();
   
-
-  const columns: GridColDef[] = [
-    { field: 'id', headerName: '#', width: 100 },
-    { field: 'firstName', headerName: 'Nombre', width: 200 },
-    { field: 'lastName', headerName: 'Apellido', width: 200 },
-    { field: 'companyName', headerName: 'Compañía', width: 200 },
-    { field: 'email', headerName: 'Email', width: 200 },
-    { field: 'cellPhone', headerName: 'Teléfono', width: 200 }
-  ];
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>Clientes</h1> 
-    <div style={{ height: 900, width: '60%' , margin: 'auto'}}>
-      <DataGrid
-        rows={dataApi}
-        columns={columns}
-        pageSizeOptions={[5, 10, 20]}
-        pagination
-        autoHeight
-      />
-    </div>
-    </div>
+    <main className={styles.container}>
+      <h1 className={styles.title}>Clientes</h1> 
+      <TableClients clientes={clientes} />
+    </main>
   );
 }

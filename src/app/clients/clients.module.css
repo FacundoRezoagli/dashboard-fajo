@@ -1,0 +1,21 @@
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 2rem auto 5rem;
+}
+
+.title {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.table {
+  width: 60%; 
+  margin: 0 auto;
+}
+
+@media (max-width: 436px) {
+    .hidden-sm {
+      display: none;
+    }
+  }

@@ -1,0 +1,16 @@
+.container {
+  width: 60%;
+  margin: 0 auto;
+  height: screen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  width: 200px;
+  text-align: center;
+  font-size: 2rem;
+}
