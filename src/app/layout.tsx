@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import '@floating-ui/react';
+// import '@floating-ui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Navbar } from "@/components/navbar";
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";

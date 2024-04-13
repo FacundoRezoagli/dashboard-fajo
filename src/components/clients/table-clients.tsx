@@ -22,7 +22,8 @@ export function TableClients({
     { field: 'cellPhone', headerName: 'Teléfono', width: 200 },
   ];
   return (
-    <div className={styles.table}>
+    <div className="container">
+      <div className={styles.table}>
       {/* TODO: Centrar verticalmente la paginación, otros usuarios tienen el mismo error */}
       <DataGrid
         localeText={esES.components.MuiDataGrid.defaultProps.localeText}
@@ -40,5 +41,7 @@ export function TableClients({
         }}
       />
     </div>
+    </div>
+    
   )
 }

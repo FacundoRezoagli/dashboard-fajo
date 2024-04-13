@@ -2,8 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function Navbar() {
+  useEffect(()=>{
+    import('bootstrap/dist/js/bootstrap.bundle');
+  })
   const pathname = usePathname();
   return (
     <nav className="navbar nav-pills navbar-expand-lg bg-dark">
